@@ -85,4 +85,4 @@ But for SGD,we only consider about a little part of data. So it's quiet faster t
 
 ### Linearly non-separable class
 
-Think about this situation, the x has two dimensions x1,x2, we calculate the x1|x2 or x1^x2. It is impossible that we get a exact line in 2d. to achieve this goal,we need to rise up the dimensions. Or use basis functions kernel trick or neural networks. 
+Think about this situation, the x has two dimensions x1,x2, we calculate the x1|x2 or x1^x2. It is impossible that we get a exact line in 2d. to achieve this goal,we need to rise up the dimensions or use basis functions kernel trick or neural networks. 
