@@ -1,0 +1,65 @@
+stream provides a aeasier way to manage the elements in list
+
+1.Create
+import java.util.*;
+import java.util.stream.Stream;
+
+public class StreamCreateExample {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("a", "b", "c");
+        Stream<String> listStream = list.stream(); 
+        Stream<String> parallelStream = list.parallelStream(); 
+        String[] array = {"x", "y", "z"};
+
+        Stream<String> arrayStream = Arrays.stream(array);
+
+        Stream<Integer> numStream = Stream.of(1, 2, 3, 4);
+
+        Stream<String> emptyStream = Stream.empty();
+    }
+}
+
+2. actions
+(1)
+List<String> filtered = list.stream()
+    .filter(s -> s != null && !s.isEmpty()) // Predicate条件：非空且不为null
+    .collect(Collectors.toList());
+(2) 
+List<Integer> intList = strList.stream()
+    .map(Integer::parseInt) // Function<String, Integer>
+    .collect(Collectors.toList());
+List<String> userNames = users.stream()
+    .map(User::getName) 
+    .collect(Collectors.toList());
+(3)
+List<Integer> distinctNums = numList.stream()
+    .distinct()
+    .collect(Collectors.toList());
+(4)
+List<String> sorted2 = strList.stream()
+    .sorted((s1, s2) -> s1.length() - s2.length()) // Comparator
+    .collect(Collectors.toList()); 
+
+(5)
+List<Integer> page2 = numList.stream()
+    .skip(3)
+    .limit(3)
+    .collect(Collectors.toList());
+
+3.finish
+(1) collect
+List<String> filteredList = list.stream()
+    .filter(s -> s.startsWith("a"))
+    .collect(Collectors.toList());
+
+(2)anyMatch
+boolean hasN = list.stream().anyMatch(s -> s.contains("n"));
+
+(3). count
+long count = list.stream().filter(s -> s.length() > 5).count(); // 结果：2（banana、cherry）
+
+(4) reduce
+String joined = list.stream().reduce("", (a, b) -> a + "," + b); // 结果：",apple,banana,cherry,date"
+
+(5) forEach
+list.stream().forEach(System.out::println);
